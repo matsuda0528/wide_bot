@@ -1,8 +1,9 @@
-# frozen_string_literal: true
+#! /usr/bin/env ruby
 
+$LOAD_PATH.unshift File.expand_path("../lib", __dir__)
+require 'wide_bot'
 require 'twitter'
 require 'dotenv'
-require_relative "wide_bot/version"
 
 module WideBot
 
