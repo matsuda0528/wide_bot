@@ -2,14 +2,17 @@
 
 $LOAD_PATH.unshift File.expand_path("../lib", __dir__)
 require 'wide_bot'
+require 'pry'
 
 module WideBot
   url = "https://race.netkeiba.com/race/shutuba.html?race_id=202209021211"
+
   fetcher = NetkeibaFetcher.new
   html = fetcher.fetch(url)
 
   parser = NetkeibaHTMLParser.new
   race_info = parser.parse(html)
+  binding.pry
 
   keiba_master = KeibaMaster.new
   good_running_horses = keiba_master.predict_race(race_info)
