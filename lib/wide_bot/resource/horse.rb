@@ -1,6 +1,8 @@
 module WideBot
   class Horse
-    def initialize(name:, age:, gender:, jockey:, barn:)
+    attr_reader :name, :age, :gender, :jockry, :barn
+
+    def initialize(name:nil, age:nil, gender:nil, jockey:nil, barn:nil)
       @name = name
       @age = age
       @gender = gender
