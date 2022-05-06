@@ -20,5 +20,6 @@ module WideBot
   tweet_text = formatter.format(good_running_horses, race_info)
 
   client = TwitterBot.new
-  client.say(tweet_text)
+  binding.pry
+  # client.say(tweet_text)
 end
