@@ -10,7 +10,7 @@ module WideBot
     private
 
     def choose_two_horses_by_random(horses)
-      horses.sample 2
+      horses.sample(2).sort_by{|v| v.number.to_i}
     end
   end
 end
