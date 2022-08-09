@@ -5,6 +5,12 @@ require 'wide_bot'
 require 'pry'
 
 module WideBot
+  jra_fetcher = JRACalendarFetcher.new
+  jra_html = jra_fetcher.fetch(Date.new(2022, 8, 6))
+
+  jra_parser = JRACalendarHTMLParser.new
+  race_id = jra_parser.parse(jra_html)
+
   race_id = "202209021211"
   # race_id YYYYCCTTDDJRR
   # YYYY: 開催年
@@ -13,11 +19,11 @@ module WideBot
   # DD:   DD日目
   # RR:   第RRレース
 
-  fetcher = NetkeibaFetcher.new
-  html = fetcher.fetch(race_id)
+  nk_fetcher = NetkeibaFetcher.new
+  nk_html = nk_fetcher.fetch(race_id)
 
-  parser = NetkeibaHTMLParser.new
-  race_info = parser.parse(html)
+  nk_parser = NetkeibaHTMLParser.new
+  race_info = nk_parser.parse(nk_html)
 
   keiba_master = KeibaMaster.new
   good_running_horses = keiba_master.predict_race(race_info)
