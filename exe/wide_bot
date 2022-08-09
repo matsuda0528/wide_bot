@@ -6,6 +6,12 @@ require 'pry'
 
 module WideBot
   url = "https://race.netkeiba.com/race/shutuba.html?race_id=202209021211"
+  # race_id YYYYCCTTDDJRR
+  # YYYY: 開催年
+  # CC:   競馬場コード(lib/wide_bot/database/race_course_id_table.rb参照)
+  # TT:   第TT回開催
+  # DD:   DD日目
+  # RR:   第RRレース
 
   fetcher = NetkeibaFetcher.new
   html = fetcher.fetch(url)
