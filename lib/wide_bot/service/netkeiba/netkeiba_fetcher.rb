@@ -6,7 +6,8 @@ module WideBot
     def initialize
     end
 
-    def fetch(url)
+    def fetch(race_id)
+      url = "https://race.netkeiba.com/race/shutuba.html?race_id=#{race_id}"
       html = Net::HTTP.get(URI.parse(url))
     end
   end
