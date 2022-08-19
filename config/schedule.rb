@@ -5,13 +5,15 @@
 
 # Example:
 #
-# set :output, "/path/to/my/cron_log.log"
+set :output, File.expand_path("../../log/cron_log.log", __FILE__)
+env :PATH, ENV['PATH']
+
+set :job_template, nil
+job_type :exe, "cd :path && ruby exe/:task :output"
 #
-# every 2.hours do
-#   command "/usr/bin/some_great_command"
-#   runner "MyModel.some_method"
-#   rake "some:great:rake:task"
-# end
+every 1.minute do
+  exe "wide_bot"
+end
 #
 # every 4.days do
 #   runner "AnotherModel.prune_old_records"
