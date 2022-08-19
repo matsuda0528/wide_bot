@@ -15,3 +15,4 @@ gem "twitter"
 gem "dotenv"
 gem "nokogiri"
 gem "pry"
+gem "whenever", require: false
