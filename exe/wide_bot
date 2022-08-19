@@ -6,12 +6,13 @@ require 'pry'
 
 module WideBot
   jra_fetcher = JRACalendarFetcher.new
-  jra_html = jra_fetcher.fetch(Date.new(2022, 8, 6))
+  jra_html = jra_fetcher.fetch(Date.new(2022, 8, 7))
 
   jra_parser = JRACalendarHTMLParser.new
-  race_id = jra_parser.parse(jra_html)
+  race_ids = jra_parser.parse(jra_html)
 
-  race_id = "202209021211"
+  race_id = race_ids.sample.main_id
+  # race_id = "202209021211"
   # race_id YYYYCCTTDDJRR
   # YYYY: 開催年
   # CC:   競馬場コード(lib/wide_bot/database/race_course_id_table.rb参照)
@@ -32,6 +33,5 @@ module WideBot
   tweet_text = formatter.format(good_running_horses, race_info)
 
   client = TwitterBot.new
-  binding.pry
   # client.say(tweet_text)
 end
